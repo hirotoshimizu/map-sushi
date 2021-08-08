@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ object.name }} | {{ block.super }}{% endblock %}
+    
+    {% block js %}
+    <script src="{% static 'detail.js' %}"></script>
+    {% endblock %}
+    
+    {% block content %}
+    <main id='restaurant-detail'>
+        <section class="py-5 text-center container">
+        <h1>{{ object.name }}</h1>
+        {% if object.description is not None %}
+        <div class="mt-4 mb-4">
+            {{ object.description }}
+        </div>
+        {% endif %}
+        <div class="container">
+            <div class="row align-items-start">
+                <div class="col">
+                    <table class="table">
+                    <tbody>
+                    <tr>
+                        <th scope="row">URL</th>
+                        <td><a href="{{ object.url }}" target="blank">{{ object.url }}</a></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Rating</th>
+                        <td>{{ rating }}</td>
+                    </tr>
+                    {% if object.business_hour is not None %}
+                    <tr>
+                        <th scope="row">Business hour</th>
+                        <td colspan="2">{{ object.business_hour }}</td>
+                    </tr>
+                    {% endif %}
+                    {% if object.closed is not None %}
+                    <tr>
+                        <th scope="row">Closed</th>
+                        <td colspan="2">{{ object.closed }}</td>
+                    </tr>
+                    {% endif %}
+                    {% if object.price is not None %}
+                    <tr>
+                        <th scope="row">Price</th>
+                        <td colspan="2">{{ object.price }}</td>
+                    </tr>
+                    {% endif %}
+                    {% if None not in object.pref or object.city or object.street_address %}
+                    <tr>
+                        <th scope="row">Address</th>
+                        <td colspan="2">
+                            {% if object.pref is not None %}
+                                {{ object.pref }}
+                            {% endif %}
+                            {% if object.city is not None %}
+                                {{ object.city }}
+                            {% endif %}
+                            {% if object.street_address is not None %}
+                                {{ object.street_address }}
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endif %}
+                    {% if object.tel is not None %}
+                    <tr>
+                        <th scope="row">Tel</th>
+                        <td colspan="2">{{ object.tel }}</td>
+                    </tr>
+                    {% endif %}
+                    {% if object.sales_point is not None %}
+                    <tr>
+                        <th scope="row">sales_point</th>
+                        <td colspan="2">{{ object.sales_point }}</td>
+                    </tr>
+                    {% endif %}
+                    {% if object.cancel != '' %}
+                    <tr>
+                        <th scope="row">Cancel</th>
+                        <td colspan="2">{{ object.cancel|safe|escape }}</td>
+                    </tr>
+                    {% endif %}
+                    </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        </section>
+    </main>
+    <div id="map"></div>
+    {% endblock %}

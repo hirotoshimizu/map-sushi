@@ -1,0 +1,9 @@
+{% extends 'admin/change_form.html' %}
+
+{% block field_sets %}
+{% for fieldset in adminform %}
+  {% include "admin/includes/fieldset.html" %}
+{% endfor %}
+
+ここになんか好きに書く
+{% endblock %}

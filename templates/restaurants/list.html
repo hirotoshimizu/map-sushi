@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block js %}
+<script src="{% static 'index.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<form action=".">
+  {% csrf_token %}
+  <input class="form-check-input" type="checkbox" name="rating" value="TMP">ミシュランプレート
+  <input class="form-check-input" type="checkbox" name="rating" value="BIB">ビブグルマン
+  <input class="form-check-input" type="checkbox" name="rating" value="ONE">一つ星
+  <input class="form-check-input" type="checkbox" name="rating" value="TWO">二つ星
+  <input class="form-check-input" type="checkbox" name="rating" value="THREE">三つ星
+</form>
+<div id="map"></div>
+{% endblock %}
