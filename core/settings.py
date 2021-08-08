@@ -139,3 +139,10 @@ except ImportError:
     pass
 
 from core.restconf.main import *
+
+if 'DJANGO_DEBUG_FALSE' in os.environ:  
+    DEBUG = False
+    ALLOWED_HOSTS = [os.environ['SITENAME']]  
+else:
+    DEBUG = True  
+    ALLOWED_HOSTS = []
