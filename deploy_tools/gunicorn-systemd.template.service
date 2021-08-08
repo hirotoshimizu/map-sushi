@@ -7,7 +7,7 @@ User=hshimizu
 WorkingDirectory=/home/hshimizu/sites/DOMAIN
 EnvironmentFile=/home/hshimizu/sites/DOMAIN/.env
 
-ExecStart=/home/hshimizu/sites/DOMAIN/virtualenv/bin/gunicorn \
+ExecStart=/home/hshimizu/sites/DOMAIN/venv/bin/gunicorn \
     --bind unix:/tmp/DOMAIN.socket \
     superlists.wsgi:application
 
