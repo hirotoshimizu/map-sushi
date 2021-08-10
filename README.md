@@ -1,1 +1,0 @@
-Map that you can search good sushi restaurants.
